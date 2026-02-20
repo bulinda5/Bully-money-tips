@@ -2,145 +2,68 @@
 <html>
 <head>
     <title>Bully Money Tips</title>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #141e30, #243b55);
-            color: white;
-            text-align: center;
-            padding: 20px;
+            margin: 0;
+            background: #f4f6f9;
         }
 
-        h1 { margin-top: 30px; }
+        header {
+            background: #1e88e5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 15px;
+        }
 
         .card {
-            background: rgba(255,255,255,0.1);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px auto;
-            max-width: 400px;
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            background: #00c853;
+            background: #1e88e5;
             color: white;
-            font-size: 16px;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
             cursor: pointer;
         }
 
-        button:hover { background: #00e676; }
-
-        .premium { background: rgba(255,0,0,0.2); margin-top: 20px; }
-        .streak { background: rgba(255,255,0,0.2); margin-top: 10px; padding: 10px; border-radius: 10px; }
-        .points { background: rgba(0,255,255,0.2); margin-top: 10px; padding: 10px; border-radius: 10px; }
+        button:hover {
+            background: #1565c0;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Bully Money Tips 💰</h1>
+<header>
+    <h1>💰 Bully Money Tips</h1>
+</header>
+
+<div class="container">
 
     <div class="card">
-        <p id="tip">Click below to get a hustle tip!</p>
-        <button onclick="newTip()">Get Free Tip</button>
-        <p id="counter">Tips viewed: 0</p>
-        <div class="streak">
-            <p id="streak">Daily Streak: 0</p>
-        </div>
-        <div class="points">
-            <p id="points">Points: 0</p>
-        </div>
+        <h3>Start a Small Online Hustle</h3>
+        <p>Sell digital products like ebooks, designs, or services online.</p>
+        <button onclick="alert('Great choice! Start today!')">Like 👍</button>
     </div>
 
-    <div class="card premium">
-        <p id="premiumTip">Premium tip locked 🔒</p>
-        <button onclick="watchAd()">Watch Ad to Unlock Premium Tip</button>
+    <div class="card">
+        <h3>Learn a High Income Skill</h3>
+        <p>Skills like coding, video editing, and digital marketing pay well.</p>
+        <button onclick="alert('Keep learning daily!')">Like 👍</button>
     </div>
 
-    <script>
-        let count = 0;
-
-        const tips = [
-            "Start a small online service like logo design.",
-            "Learn coding and sell websites.",
-            "Flip items from local markets.",
-            "Offer social media management.",
-            "Start phone repair business.",
-            "Sell digital products like ebooks."
-        ];
-
-        const premiumTips = [
-            "Start a niche dropshipping store.",
-            "Build a SaaS tool and charge subscription.",
-            "Invest profits into small rental business."
-        ];
-
-        function newTip() {
-            const random = Math.floor(Math.random() * tips.length);
-            document.getElementById("tip").innerText = tips[random];
-            count++;
-            document.getElementById("counter").innerText = "Tips viewed: " + count;
-        }
-
-        // Daily streak + points
-        function updateStreak() {
-            const lastDate = localStorage.getItem("lastDate");
-            let streak = parseInt(localStorage.getItem("streak") || "0");
-            let points = parseInt(localStorage.getItem("points") || "0");
-            const today = new Date().toDateString();
-
-            if (lastDate === today) {
-                // already counted today
-            } else {
-                if (lastDate) {
-                    const yesterday = new Date();
-                    yesterday.setDate(yesterday.getDate() - 1);
-                    if (new Date(lastDate).toDateString() === yesterday.toDateString()) {
-                        streak += 1; // consecutive day
-                    } else {
-                        streak = 1; // missed day
-                    }
-                } else {
-                    streak = 1; // first day
-                }
-                localStorage.setItem("streak", streak);
-                localStorage.setItem("lastDate", today);
-
-                // give points for streak
-                points += streak * 10; // 10 points per streak day
-                localStorage.setItem("points", points);
-            }
-
-            document.getElementById("streak").innerText = "Daily Streak: " + streak;
-            document.getElementById("points").innerText = "Points: " + points;
-        }
-
-        updateStreak();
-
-        // Fake ad simulation for premium tip
-        function watchAd() {
-            alert("Simulating ad... Watch ad to earn 50 points!");
-            let points = parseInt(localStorage.getItem("points") || "0");
-            points += 50;
-            localStorage.setItem("points", points);
-            document.getElementById("points").innerText = "Points: " + points;
-
-            // show premium tip after "ad"
-            const random = Math.floor(Math.random() * premiumTips.length);
-            document.getElementById("premiumTip").innerText = premiumTips[random];
-        }
-    </script>
+</div>
 
 </body>
 </html>
-
-
-</body>
-</html>
-
-<
